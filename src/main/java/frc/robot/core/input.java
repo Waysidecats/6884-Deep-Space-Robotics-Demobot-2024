@@ -5,9 +5,9 @@ public class input {
  
     public static double[] getAxis (XboxController input) {
         double leftX = input.getLeftX();
-        double leftY = input.getLeftY();
+        double leftY = -1*(input.getLeftY());
         double rightX = input.getRightX();
-        double rightY = input.getRightY();
+        double rightY = -1*(input.getRightY());
         double[] output = {leftX, leftY, rightX, rightY};
         return output;
         

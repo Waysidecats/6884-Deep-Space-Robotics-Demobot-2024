@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.core.Movement;
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -21,10 +22,9 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   XboxController controller = new XboxController(0);
-  /**
-   * This function is run when the robot is first started up and should be used for any
-   * initialization code.
-   */
+
+
+
   @Override
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
@@ -85,8 +85,10 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     double[] axis = input.getAxis(controller);
-    boolean[] buttons = input.getButtons(controller);
-    System.out.println(""+axis+buttons);
+    //boolean[] buttons = input.getButtons(controller);
+   
+    Movement.Motors(axis);
+    
   }
     
   /** This function is called once when the robot is disabled. */
@@ -103,7 +105,13 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during test mode. */
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+    double[] axis = input.getAxis(controller);
+    boolean[] buttons = input.getButtons(controller);
+    System.out.println("Axis+Buttons: "+axis[0]+" "+axis[1]+" "+axis[2]+" "+axis[3]+" "+buttons[0]+" "+buttons[1]+" "+buttons[2]+" "+buttons[3]);
+    double[] Motors = Movement.Motors(axis);
+    System.out.println("Motor Speed: " + Motors[0]+" "+Motors[1]);
+  }
 
   /** This function is called once when the robot is first started up. */
   @Override
