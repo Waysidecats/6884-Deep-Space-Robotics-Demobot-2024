@@ -17,7 +17,7 @@ public class input {
         boolean x = input.getXButtonPressed();
         boolean b = input.getBButtonPressed();
         boolean y = input.getYButtonPressed();
-        boolean[] output = {a,x,b,y};
+        boolean[] output = {a,b ,x,y};
         return output;
     };
 }
