@@ -39,13 +39,14 @@ public class Movement {
         return speed;
     };
         public static double rightMotor (double[] axis) {
-        double axisX = axis[0];
-        double axisY = axis[1];
+        double axisX = axis[1];
+        double axisY = axis[0];
         double speed = 0;
-        if (axisY > axisX) {
+        
+        if (Math.abs(axisY) > Math.abs(axisX)) {
             speed = axisY;
         }
-        else if (axisY < axisX) {
+        else if (Math.abs(axisY) < Math.abs(axisX)) {
             speed = -axisX;
         }
         else if (axisY == axisX) {
