@@ -1,11 +1,13 @@
 package frc.robot.core;
 import java.lang.IllegalArgumentException;
-import com.ctre.phoenix6.hardware.TalonFX;
+import edu.wpi.first.wpilibj.motorcontrol.PWMTalonSRX;
 public class Movement {
-    TalonFX rMotorController1 = new TalonFX(2);
-    TalonFX rMotorController2 = new TalonFX(3);
-    TalonFX lMotorController1 = new TalonFX(4);
-    TalonFX lMotorController2 = new TalonFX(5);
+    
+    
+    PWMTalonSRX rMotorController1 = new PWMTalonSRX(2);
+    PWMTalonSRX rMotorController2 = new PWMTalonSRX(3);
+    PWMTalonSRX lMotorController1 = new PWMTalonSRX(4);
+    PWMTalonSRX lMotorController2 = new PWMTalonSRX(5);
 
 
     //Unused code
