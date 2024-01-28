@@ -1,7 +1,11 @@
 package frc.robot.core;
 import java.lang.IllegalArgumentException;
-
+import com.ctre.phoenix6.hardware.TalonFX;
 public class Movement {
+    TalonFX rMotorController1 = new TalonFX(0);
+    TalonFX rMotorController2 = new TalonFX(1);
+    TalonFX lMotorController1 = new TalonFX(2);
+    TalonFX lMotorController2 = new TalonFX(3);
     public static double Calculate_angle (double[] a) {
         double leftX = a[0];
         double leftY = a[1];
@@ -11,17 +15,12 @@ public class Movement {
         return angle;
     };
 
-    public static double[] Motors (double[] axis) {
-       double l = controlLeftMotor(axis);
-       double r = controlRightMotor(axis);
-       double[] out = {l,r};
-       return out;
-    }
 
 
 
 
-    public static double controlLeftMotor (double[] axis) {
+
+    public void controlLeftMotor (double[] axis) {
                 if (axis.length < 2) {
             throw new IllegalArgumentException("invalid axis: axis length must be more than 1");
         }
@@ -40,9 +39,10 @@ public class Movement {
         else {
             System.err.println("Error: Axis Does Not Compute");
         }
-        return speed;
+        lMotorController1.set(speed);
+        lMotorController2.set(speed);
     };
-    public static double controlRightMotor (double[] axis) {
+    public void controlRightMotor (double[] axis) {
                 if (axis.length < 2) {
             throw new IllegalArgumentException("invalid axis: axis length must be more than 1");
         }
@@ -65,6 +65,7 @@ public class Movement {
             System.err.println("Error: Axis Does Not Compute");
         
         }
-        return speed;
+        rMotorController1.set(speed);
+        rMotorController2.set(speed);
     };
 }

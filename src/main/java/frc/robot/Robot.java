@@ -22,7 +22,7 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   XboxController controller = new XboxController(0);
-
+  Movement Motors = new Movement();
 
 
   @Override
@@ -85,9 +85,11 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     double[] axis = input.getAxis(controller);
+    Motors.controlLeftMotor(axis);
+    Motors.controlRightMotor(axis);
+    
     //boolean[] buttons = input.getButtons(controller);
    
-    Movement.Motors(axis);
     
   }
     
@@ -106,11 +108,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during test mode. */
   @Override
   public void testPeriodic() {
-    double[] axis = input.getAxis(controller);
-    boolean[] buttons = input.getButtons(controller);
-    System.out.println("Axis+Buttons: "+axis[0]+" "+axis[1]+" "+axis[2]+" "+axis[3]+" "+buttons[0]+" "+buttons[1]+" "+buttons[2]+" "+buttons[3]);
-    double[] Motors = Movement.Motors(axis);
-    System.out.println("Motor Speed: " + Motors[0]+" "+Motors[1]);
+
   }
 
   /** This function is called once when the robot is first started up. */
