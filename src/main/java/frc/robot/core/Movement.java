@@ -8,7 +8,7 @@ public class Movement {
     TalonFX lMotorController2 = new TalonFX(5);
 
 
-    //Unimplemented
+    //Unused code
     public static double Calculate_angle (double[] a) {
         double leftX = a[0];
         double leftY = a[1];
