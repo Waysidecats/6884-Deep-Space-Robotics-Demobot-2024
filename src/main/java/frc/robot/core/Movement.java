@@ -2,10 +2,10 @@ package frc.robot.core;
 import java.lang.IllegalArgumentException;
 import com.ctre.phoenix6.hardware.TalonFX;
 public class Movement {
-    TalonFX rMotorController1 = new TalonFX(0);
-    TalonFX rMotorController2 = new TalonFX(1);
-    TalonFX lMotorController1 = new TalonFX(2);
-    TalonFX lMotorController2 = new TalonFX(3);
+    TalonFX rMotorController1 = new TalonFX(2);
+    TalonFX rMotorController2 = new TalonFX(3);
+    TalonFX lMotorController1 = new TalonFX(4);
+    TalonFX lMotorController2 = new TalonFX(5);
     public static double Calculate_angle (double[] a) {
         double leftX = a[0];
         double leftY = a[1];
