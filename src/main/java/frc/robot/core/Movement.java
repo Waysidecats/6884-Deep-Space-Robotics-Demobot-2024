@@ -6,6 +6,9 @@ public class Movement {
     TalonFX rMotorController2 = new TalonFX(3);
     TalonFX lMotorController1 = new TalonFX(4);
     TalonFX lMotorController2 = new TalonFX(5);
+
+
+    //Unimplemented
     public static double Calculate_angle (double[] a) {
         double leftX = a[0];
         double leftY = a[1];
@@ -19,7 +22,7 @@ public class Movement {
 
 
 
-
+    //Calculates Left Motor Speeds and sets it
     public void controlLeftMotor (double[] axis) {
                 if (axis.length < 2) {
             throw new IllegalArgumentException("invalid axis: axis length must be more than 1");
@@ -42,6 +45,8 @@ public class Movement {
         lMotorController1.set(speed);
         lMotorController2.set(speed);
     };
+
+    //Calculates Right Motor Speed and sets it
     public void controlRightMotor (double[] axis) {
                 if (axis.length < 2) {
             throw new IllegalArgumentException("invalid axis: axis length must be more than 1");

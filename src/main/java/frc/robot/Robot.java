@@ -21,7 +21,9 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  //Initialize controller
   XboxController controller = new XboxController(0);
+  //Initialize Motors
   Movement Motors = new Movement();
 
 
@@ -84,10 +86,12 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
+    //Gets the controller Axis (see core/input.java)
     double[] axis = input.getAxis(controller);
+    //Uses axis to control the motors (see core/Movement.java)
     Motors.controlLeftMotor(axis);
     Motors.controlRightMotor(axis);
-    
+
     //boolean[] buttons = input.getButtons(controller);
    
     
