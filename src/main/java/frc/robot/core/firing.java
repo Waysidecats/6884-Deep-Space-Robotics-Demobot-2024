@@ -1,9 +1,26 @@
 package frc.robot.core;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
+import com.revrobotics.CANSparkLowLevel.MotorType;
+
+import edu.wpi.first.math.controller.PIDController;
 
 public class firing {
+    CANSparkMax motor = new CANSparkMax(1, MotorType.kBrushless);
+    PIDController PID = new PIDController(3, 0, 0);
     public void fire (boolean[] buttons) {
         if (buttons[2]) {   
-            
+
         };
-    } 
+    }
+    public void Aim (boolean[] buttons) {
+        RelativeEncoder encoder = motor.getEncoder();
+        if (buttons[2]) {
+            double location = encoder.getPosition();
+            double target = location+2;
+            PID.setSetpoint(target);
+            double output = PID.calculate(location);
+            motor.set(output);
+        }
+    }
 }
