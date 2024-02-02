@@ -5,7 +5,7 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.math.controller.PIDController;
 
-public class firing {
+public class Firing {
     CANSparkMax motor = new CANSparkMax(1, MotorType.kBrushless);
     PIDController PID = new PIDController(0.1, 0, 0);
         PIDController iPID = new PIDController(0.07, 20, 0);
@@ -26,7 +26,7 @@ public class firing {
     }
     public void AimIntegral (boolean[] buttons) {
         RelativeEncoder encoder = motor.getEncoder();
-        if (buttons[2]) {
+        if (buttons[0]) {
             double location = encoder.getPosition();
             double target = location+2;
             iPID.setSetpoint(target);

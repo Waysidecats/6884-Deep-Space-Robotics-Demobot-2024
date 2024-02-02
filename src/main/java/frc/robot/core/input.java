@@ -1,7 +1,7 @@
 package frc.robot.core;
 import edu.wpi.first.wpilibj.XboxController;
 
-public class input {
+public class Input {
  
     //Gets the axis values and puts them in an array
     public static double[] getAxis (XboxController input) {

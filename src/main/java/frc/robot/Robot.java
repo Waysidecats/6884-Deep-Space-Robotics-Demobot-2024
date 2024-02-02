@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.core.Movement;
+import frc.robot.core.Firing;
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -25,6 +26,7 @@ public class Robot extends TimedRobot {
   XboxController controller = new XboxController(0);
   //Initialize Motors
   Movement Motors = new Movement();
+  Firing Fire = new Firing();
 
 
   @Override
@@ -87,10 +89,15 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     //Gets the controller Axis (see core/input.java)
-    double[] axis = input.getAxis(controller);
+    double[] axis = Input.getAxis(controller);
+    boolean[] buttons = Input.getButtons(controller);
     //Uses axis to control the motors (see core/Movement.java)
     Motors.controlLeftMotor(axis);
     Motors.controlRightMotor(axis);
+    Fire.Aim(buttons);
+    Fire.AimIntegral(buttons);
+    Fire.fire(buttons);
+    
 
     //boolean[] buttons = input.getButtons(controller);
    
