@@ -8,7 +8,7 @@ import edu.wpi.first.math.controller.PIDController;
 public class Firing {
     CANSparkMax motor = new CANSparkMax(1, MotorType.kBrushless);
     PIDController PID = new PIDController(0.1, 0, 0);
-        PIDController iPID = new PIDController(0.07, 20, 0);
+        PIDController iPID = new PIDController(0, 5, 0);
     public void fire (boolean[] buttons) {
         if (buttons[2]) {   
 
