@@ -17,8 +17,8 @@ public class Firing {
     public void Aim (boolean[] buttons) {
         RelativeEncoder encoder = motor.getEncoder();
         if (buttons[2]) {
-            double location = encoder.getPosition();
-            double target = location+2;
+            double location = (360)*(encoder.getPosition());
+            double target = location + 720;
             PID.setSetpoint(target);
             double output = PID.calculate(location);
             motor.set(output);
