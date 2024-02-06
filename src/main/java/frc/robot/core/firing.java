@@ -23,6 +23,9 @@ public class Firing {
             double output = PID.calculate(location);
             motor.set(output);
         }
+        double location = encoder.getPosition();
+        double output = iPID.calculate(location);
+        motor.set(output);
     }
     public void AimIntegral (boolean[] buttons) {
         RelativeEncoder encoder = motor.getEncoder();
@@ -33,5 +36,8 @@ public class Firing {
             double output = iPID.calculate(location);
             motor.set(output);
         }
+        double location = encoder.getPosition();
+        double output = iPID.calculate(location);
+        motor.set(output);
     }
 }
