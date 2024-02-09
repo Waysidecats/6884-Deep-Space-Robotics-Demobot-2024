@@ -8,7 +8,7 @@ import edu.wpi.first.math.controller.PIDController;
 public class Firing {
     CANSparkMax motor = new CANSparkMax(1, MotorType.kBrushless);
     PIDController PID = new PIDController(0.1, 0, 0);
-        PIDController iPID = new PIDController(0, 5, 0);
+    PIDController iPID = new PIDController(0, 5, 0);
     public void fire (boolean[] buttons) {
         if (buttons[2]) {   
 
@@ -20,8 +20,6 @@ public class Firing {
             double location = encoder.getPosition();
             double target = location+2;
             PID.setSetpoint(target);
-            double output = PID.calculate(location);
-            motor.set(output);
         }
         double location = encoder.getPosition();
         double output = iPID.calculate(location);
@@ -33,8 +31,6 @@ public class Firing {
             double location = encoder.getPosition();
             double target = location+2;
             iPID.setSetpoint(target);
-            double output = iPID.calculate(location);
-            motor.set(output);
         }
         double location = encoder.getPosition();
         double output = iPID.calculate(location);
