@@ -88,12 +88,13 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    //Gets the controller Axis (see core/input.java)
+    //Gets the controller Axis (see core/Input.java)
     double[] axis = Input.getAxis(controller);
     boolean[] buttons = Input.getButtons(controller);
     //Uses axis to control the motors (see core/Movement.java)
     Motors.controlLeftMotor(axis);
     Motors.controlRightMotor(axis);
+    //Firing and aiming (see core/Firing.java)
     Fire.Aim(buttons);
     Fire.AimIntegral(buttons);
     Fire.fire(buttons);
