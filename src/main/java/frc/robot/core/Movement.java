@@ -66,7 +66,7 @@ public class Movement {
         else if (Math.abs(axisY) < Math.abs(axisX)) {
             speed = -axisX;
         }
-        else if (axisY == axisX) {
+        else if (Math.abs(axisY) == Math.abs(axisX)) {
             speed = 0;
         }
         else {
