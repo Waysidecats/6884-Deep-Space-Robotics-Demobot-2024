@@ -17,19 +17,17 @@ public class Firing {
     public void Aim (boolean[] buttons) {
         RelativeEncoder encoder = motor.getEncoder();
         if (buttons[2]) {
-            double location = encoder.getPosition();
-            double target = location+2;
+            double target = PID.getSetpoint() + 2;
             PID.setSetpoint(target);
         }
         double location = encoder.getPosition();
-        double output = iPID.calculate(location);
+        double output = PID.calculate(location);
         motor.set(output);
     }
     public void AimIntegral (boolean[] buttons) {
         RelativeEncoder encoder = motor.getEncoder();
         if (buttons[0]) {
-            double location = encoder.getPosition();
-            double target = location+2;
+            double target = iPID.getSetpoint()+2;
             iPID.setSetpoint(target);
         }
         double location = encoder.getPosition();

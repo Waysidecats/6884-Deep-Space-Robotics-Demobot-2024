@@ -95,8 +95,22 @@ public class Robot extends TimedRobot {
     Motors.controlLeftMotor(axis);
     Motors.controlRightMotor(axis);
     //Firing and aiming (see core/Firing.java)
-    Fire.Aim(buttons);
-    Fire.AimIntegral(buttons);
+    boolean intAim = false;
+    boolean Aim = false;
+    if (buttons[0]) {
+      intAim = true;
+      Aim = false;
+    }
+    if (buttons[2]) {
+      Aim = true;
+      intAim = false;
+    }
+    if (Aim){
+      Fire.Aim(buttons);
+    }
+    if (intAim) {
+      Fire.AimIntegral(buttons);
+    }
     Fire.fire(buttons);
     
 
