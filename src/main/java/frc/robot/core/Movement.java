@@ -14,6 +14,7 @@ public class Movement {
         lMotorController2.follow(lMotorController1);
         rMotorController2.follow(rMotorController1);
         rMotorController1.setInverted(true);
+        rMotorController2.setInverted(true);
     }
 
    public void Motors (double[] input) {
