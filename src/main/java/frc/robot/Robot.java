@@ -34,6 +34,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+    Motors.init();
   }
 
   /**
@@ -92,8 +93,7 @@ public class Robot extends TimedRobot {
     double[] axis = Input.getAxis(controller);
     boolean[] buttons = Input.getButtons(controller);
     //Uses axis to control the motors (see core/Movement.java)
-    Motors.controlLeftMotor(axis);
-    Motors.controlRightMotor(axis);
+    Motors.Motors(axis);
     //Firing and aiming (see core/Firing.java)
     boolean intAim = false;
     boolean Aim = false;
