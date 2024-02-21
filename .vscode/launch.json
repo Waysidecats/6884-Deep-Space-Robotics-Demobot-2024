@@ -6,6 +6,7 @@
   "configurations": [
     {
       "type": "java",
+   
       "name": "Main",
       "request": "launch",
       "mainClass": "frc.robot.Main",

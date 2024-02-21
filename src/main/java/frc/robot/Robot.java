@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.core.Movement;
 import frc.robot.core.Firing;
+import frc.robot.SteamExpoCode.*;
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -27,6 +28,7 @@ public class Robot extends TimedRobot {
   //Initialize Motors
   Movement Motors = new Movement();
   Firing Fire = new Firing();
+  Sensor sensor = new Sensor();
 
 
   @Override
@@ -94,6 +96,7 @@ public class Robot extends TimedRobot {
     boolean[] buttons = Input.getButtons(controller);
     //Uses axis to control the motors (see core/Movement.java)
     Motors.Motors(axis);
+    sensor.sensing();
     //Firing and aiming (see core/Firing.java)
     boolean intAim = false;
     boolean Aim = false;
