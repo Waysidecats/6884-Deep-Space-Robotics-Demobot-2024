@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
   Movement Motors = new Movement();
   Firing Fire = new Firing();
   Sensor sensor = new Sensor();
+Lights lights = new Lights();
 
 
   @Override
@@ -37,6 +38,7 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
     Motors.init();
+    lights.innit();
   }
 
   /**
@@ -85,7 +87,6 @@ public class Robot extends TimedRobot {
   /** This function is called once when teleop is enabled. */
   @Override
   public void teleopInit() {
-  
   }
 
   /** This function is called periodically during operator control. */
@@ -94,33 +95,10 @@ public class Robot extends TimedRobot {
     //Gets the controller Axis (see core/Input.java)
     double[] axis = Input.getAxis(controller);
     boolean[] buttons = Input.getButtons(controller);
-    //Uses axis to control the motors (see core/Movement.java)
     Motors.Motors(axis);
     sensor.sensing();
-    //Firing and aiming (see core/Firing.java)
-    boolean intAim = false;
-    boolean Aim = false;
-    if (buttons[0]) {
-      intAim = true;
-      Aim = false;
+    lights.light();
     }
-    if (buttons[2]) {
-      Aim = true;
-      intAim = false;
-    }
-    if (Aim){
-      Fire.Aim(buttons);
-    }
-    if (intAim) {
-      Fire.AimIntegral(buttons);
-    }
-    Fire.fire(buttons);
-    
-
-    //boolean[] buttons = input.getButtons(controller);
-   
-    
-  }
     
   /** This function is called once when the robot is disabled. */
   @Override
