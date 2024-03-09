@@ -22,5 +22,10 @@ public final class Constants {
     public static final int kLMotor2ID = 0;
     public static final int kRMotor1ID = 0;
     public static final int kRMotor2ID = 0;
+  }  
+  public static class Arm {
+    public static final double kVelocity = 0.7;
+    public static final double kRotationMultiplier = 20;
   }
+  
 }

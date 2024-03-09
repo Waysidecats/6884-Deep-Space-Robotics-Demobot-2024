@@ -5,8 +5,10 @@
 package frc.robot;
 
 
+import frc.robot.commands.ArmCommand;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 
@@ -26,13 +28,15 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final DriveSubsystem m_DriveSubsystem = new DriveSubsystem();
+  private final ArmSubsystem m_ArmSubsystem = new ArmSubsystem();
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController = new CommandXboxController(kDriverControllerPort);
   private final DriveCommand m_DriveCommand = new DriveCommand(m_DriveSubsystem, m_driverController::getLeftX, m_driverController::getLeftY);
-
+  private final ArmCommand m_ArmCommand = new ArmCommand(m_ArmSubsystem, m_driverController::getRightY);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     m_DriveSubsystem.setDefaultCommand(m_DriveCommand);
+    m_ArmSubsystem.setDefaultCommand(m_ArmCommand);
     // Configure the trigger bindings
     configureBindings();
   }
